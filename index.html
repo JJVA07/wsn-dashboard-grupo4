@@ -1,0 +1,137 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>WSN - DASHBOARD GRUPO 4</title>
+  <link rel="stylesheet" href="styles.css" />
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+</head>
+
+<body>
+  <header class="topbar">
+    <div class="topbar__left">
+      <h1>WSN - DASHBOARD GRUPO 4</h1>
+      <p class="subtitle">Cards + Gráficas + Viento (Brújula). Sin tabla. Sin auto-refresco.</p>
+    </div>
+
+    <div class="topbar__right">
+      <span id="statusPill" class="pill pill--idle">Listo</span>
+      <button class="btn btn--ghost" id="btnReload" title="Recargar datos">Recargar</button>
+    </div>
+  </header>
+
+  <main class="container">
+
+    <!-- Panel: Controles -->
+    <section class="panel">
+      <div class="panel__header">
+        <h2>Controles</h2>
+        <p class="hint">Elige un rango y (opcional) un grupo.</p>
+      </div>
+
+      <div class="controls">
+        <div class="rangeBtns">
+          <button class="btn btn--ghost rangeBtn" data-range="today">Hoy</button>
+          <button class="btn btn--ghost rangeBtn" data-range="24h">Últimas 24h</button>
+          <button class="btn btn--ghost rangeBtn" data-range="7d">Últimos 7 días</button>
+          <button class="btn btn--ghost rangeBtn" data-range="30d">Últimos 30 días</button>
+          <button class="btn btn--ghost rangeBtn" data-range="all">Todo</button>
+        </div>
+
+        <div class="rightControls">
+          <div class="field">
+            <label for="groupSelect">Grupo / Nodo</label>
+            <select id="groupSelect">
+              <option value="ALL">Todos</option>
+            </select>
+          </div>
+
+          <button class="btn" id="btnApply">Aplicar</button>
+        </div>
+      </div>
+
+      <div class="rangeInfo">
+        <span class="muted">Rango actual:</span>
+        <strong id="rangeText">—</strong>
+      </div>
+    </section>
+
+    <!-- Cards -->
+    <section class="cards" id="cards"></section>
+
+    <!-- Viento + Resumen -->
+    <section class="grid2">
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Viento</h2>
+          <p class="hint">Brújula (WD) + indicador de velocidad (WS)</p>
+        </div>
+
+        <div class="windWrap">
+          <div class="windCanvasBox">
+            <canvas id="windCompass" width="360" height="360"></canvas>
+          </div>
+
+          <div class="windMeta">
+            <div class="kv"><span>Dirección (WD)</span><strong id="wdText">—</strong></div>
+            <div class="kv"><span>Velocidad (WS)</span><strong id="wsText">—</strong></div>
+            <div class="kv"><span>Grupo</span><strong id="windGroup">—</strong></div>
+            <div class="kv"><span>Último timestamp</span><strong id="lastTs">—</strong></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="panel">
+        <div class="panel__header">
+          <h2>Resumen</h2>
+          <p class="hint">Promedios del rango seleccionado</p>
+        </div>
+        <div class="summary" id="summaryBox"></div>
+      </section>
+    </section>
+
+    <!-- Gráficos -->
+    <section class="panel">
+      <div class="panel__header">
+        <h2>Gráficos</h2>
+        <p class="hint">Escalas y tamaño estables (no se deforma).</p>
+      </div>
+
+      <div class="charts">
+        <div class="chartCard">
+          <h3>Temperaturas (°C)</h3>
+          <div class="chartBox"><canvas id="chartTemp"></canvas></div>
+        </div>
+
+        <div class="chartCard">
+          <h3>Humedad (%)</h3>
+          <div class="chartBox"><canvas id="chartHum"></canvas></div>
+        </div>
+
+        <div class="chartCard">
+          <h3>Viento (WS)</h3>
+          <div class="chartBox"><canvas id="chartWind"></canvas></div>
+        </div>
+
+        <div class="chartCard">
+          <h3>Rain</h3>
+          <div class="chartBox"><canvas id="chartRain"></canvas></div>
+        </div>
+
+        <div class="chartCard">
+          <h3>Batería (V)</h3>
+          <div class="chartBox"><canvas id="chartBatt"></canvas></div>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="footer">
+    <small>Fuente: Google Sheets → Apps Script Web App</small>
+  </footer>
+
+  <script src="app.js"></script>
+</body>
+</html>
