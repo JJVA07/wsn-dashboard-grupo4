@@ -12,7 +12,7 @@
   <header class="topbar">
     <div class="topbar__left">
       <h1>WSN - DASHBOARD GRUPO 4</h1>
-      <p class="subtitle">Cards + Gráficas + Viento (Brújula). Sin tabla. Sin auto-refresco.</p>
+      <!-- Subtitle removido -->
     </div>
 
     <div class="topbar__right">
@@ -70,7 +70,8 @@
 
         <div class="windWrap">
           <div class="windCanvasBox">
-            <canvas id="windCompass" width="360" height="360"></canvas>
+            <!-- Canvas más pequeño y con padding del contenedor para que no se corte -->
+            <canvas id="windCompass" width="320" height="320"></canvas>
           </div>
 
           <div class="windMeta">
@@ -95,17 +96,17 @@
     <section class="panel">
       <div class="panel__header">
         <h2>Gráficos</h2>
-        <p class="hint">Escalas y tamaño estables (no se deforma).</p>
+        <p class="hint">Si eliges “Todos”, se superponen por nodo con leyenda.</p>
       </div>
 
       <div class="charts">
         <div class="chartCard">
-          <h3>Temperaturas (°C)</h3>
+          <h3>Temperaturas</h3>
           <div class="chartBox"><canvas id="chartTemp"></canvas></div>
         </div>
 
         <div class="chartCard">
-          <h3>Humedad (%)</h3>
+          <h3>Humedad</h3>
           <div class="chartBox"><canvas id="chartHum"></canvas></div>
         </div>
 
@@ -115,12 +116,12 @@
         </div>
 
         <div class="chartCard">
-          <h3>Rain</h3>
+          <h3>Lluvia (Rain)</h3>
           <div class="chartBox"><canvas id="chartRain"></canvas></div>
         </div>
 
         <div class="chartCard">
-          <h3>Batería (V)</h3>
+          <h3>Batería</h3>
           <div class="chartBox"><canvas id="chartBatt"></canvas></div>
         </div>
       </div>
